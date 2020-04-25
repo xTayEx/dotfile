@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
     "Plug 'Yggdroot/LeaderF'
     Plug 'jiangmiao/auto-pairs'
     Plug 'mhinz/vim-startify'
+    "Plug 'vim-scripts/YankRing.vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'preservim/nerdtree'
@@ -18,8 +19,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'ycm-core/YouCompleteMe'
     Plug 'ryanoasis/vim-devicons'
     Plug 'Chiel92/vim-autoformat'
-    "Plug 'octol/vim-cpp-enhanced-highlight'
-    "Plug 'tpope/vim-surround'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'tpope/vim-surround'
+    Plug 'machakann/vim-highlightedyank'
 call plug#end()
 if has("syntax")
   syntax on
@@ -78,13 +80,16 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-"inoremap jj <Esc>
-"vnoremap jj <Esc> 
+inoremap ;; <Esc>
+vnoremap ;; <Esc> 
+nnoremap ww :w<cr>
+nnoremap wwq :wq<cr>
 "map <Leader>ut :UndotreeToggle<cr>
 nnoremap <Leader>ve :edit /etc/vim/vimrc<cr>
 nnoremap <Leader>vs :source /etc/vim/vimrc<cr>
-map <C-F> :Files<cr>
-map <C-w>h :History<cr>
+map <leader>f :Files<cr>
+map <leader>h :History<cr>
+map <leader>b :Buffers<cr>
 map <C-N> :bn<cr>
 map <C-P> :bp<cr>
 map <Leader>bd :bd<cr>
@@ -100,7 +105,7 @@ nnoremap <Leader>9 :b9<cr>
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 
-let g:Lf_StlSeparator={'left': '', 'right': '', 'font:': 'consola NF'}
+"let g:Lf_StlSeparator={'left': '', 'right': '', 'font:': 'consola NF'}
 
 map <F8> :call GenerateTags()<cr>
 func! GenerateTags()
