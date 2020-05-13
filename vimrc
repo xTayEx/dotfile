@@ -2,16 +2,11 @@ runtime! debian.vim
 
 call plug#begin('~/.vim/plugged')
     Plug 'easymotion/vim-easymotion'
-    "Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
-    "Plug 'itchyny/calendar.vim', {'on': 'Calendar'}
     Plug 'preservim/nerdcommenter'
-    "Plug 'mbbill/echofunc'
     Plug '~/.fzf'
     Plug 'junegunn/fzf.vim'
-    "Plug 'Yggdroot/LeaderF'
     Plug 'jiangmiao/auto-pairs'
     Plug 'mhinz/vim-startify'
-    "Plug 'vim-scripts/YankRing.vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'preservim/nerdtree'
@@ -21,26 +16,29 @@ call plug#begin('~/.vim/plugged')
     Plug 'Chiel92/vim-autoformat'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'tpope/vim-surround'
-    Plug 'machakann/vim-highlightedyank'
+    "Plug 'machakann/vim-highlightedyank'
+    "Plug 'junegunn/goyo.vim'
+    "Plug 'liuchengxu/nerdtree-dash'
 call plug#end()
 if has("syntax")
   syntax on
 endif
 set laststatus=2
 
-
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
 set nowrap
-set sidescroll=1
+set sidescroll=0
 set number
 syntax on
 let g:airline_theme='molokai'
 set background=dark
 colorscheme better_monokai
 set mouse=a
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin1
+set termencoding=utf-8
 set encoding=utf-8
 filetype indent on
 set autoindent
@@ -51,7 +49,6 @@ set smarttab
 set showmatch
 filetype on
 filetype plugin on
-filetype indent on
 set shiftwidth=4
 set linespace=0
 set noshowmode
@@ -63,10 +60,18 @@ let g:airline#extensions#tabline#enabled=1
 let mapleader=','
 set encoding=utf8
 set termencoding=utf-8
+let g:NERDCreateDeafultMappings=0
 map <F3> :NERDTreeToggle<CR>
 let g:startify_custom_header=
-    \ 'startify#center(startify#fortune#cowsay())'
-
+        \ startify#center([
+        \ '   __  __                      ____                    __      __      ',
+        \ '  /\ \/\ \  __                /\  __`\                /\ \    /\ \     ',
+        \ "  \\ \\ \\ \\ \\/\\_\\   ___ ___     \\ \\ \\_\\ \\    ___     ___\\ \\ \\/'\\\\ \\ \\    ",
+        \ "   \\ \\ \\ \\ \\/\\ \\ /' __` __`\\   \\ \\ ,  /   / __`\\  /'___\\ \\ , < \\ \\ \\   ",
+        \ '    \ \ \_/ \ \ \/\ \/\ \/\ \   \ \ \\ \ /\ \_\ \/\ \__/\ \ \\`\\ \_\  ',
+        \ '     \ `\___/\ \_\ \_\ \_\ \_\   \ \_\ \_\ \____/\ \____\\ \_\ \_\/\_\ ',
+        \ '      `\/__/  \/_/\/_/\/_/\/_/    \/_/\/ /\/___/  \/____/ \/_/\/_/\/_/ '
+        \])
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "M",
     \ "Staged"    : "+",
@@ -80,9 +85,10 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-inoremap ;; <Esc>
-vnoremap ;; <Esc> 
+inoremap <C>[ <Esc>
+vnoremap <C>[ <Esc>
 nnoremap ww :w<cr>
+nnoremap qq :q<cr>
 nnoremap wwq :wq<cr>
 "map <Leader>ut :UndotreeToggle<cr>
 nnoremap <Leader>ve :edit /etc/vim/vimrc<cr>
@@ -112,7 +118,7 @@ func! GenerateTags()
     exec '!ctags -R --fields=+lS'
 endfunc
 
-map <F11> :call CompileAndRun()<cr> 
+map <F11> :call CompileAndRun()<cr>
 func! CompileAndRun()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
@@ -140,16 +146,16 @@ func! Compile()
 endfunc
 
 
-map <F12> :call Settitle()<cr>Gi
-map <C-W>a ggvGl
-map <Leader>pi :PlugInstall<cr>
-map <Leader>ps :PlugStatus<cr>
-map <S-K> <plug>NERDCommenterToggle
-map <C-H> <C-W>h
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-L> <C-W>l
-map :W :w
+nmap <F12> :call Settitle()<cr>Gi
+nmap <leader>a ggvG$
+nmap <Leader>pi :PlugInstall<cr>
+nmap <Leader>ps :PlugStatus<cr>
+map <leader><space> <plug>NERDCommenterToggle
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-L> <C-W>l
+nmap :W :w
 
 func! Settitle()
     let l = 0
@@ -177,15 +183,17 @@ func! Settitle()
     let l = l + 1 | call setline(l, '')
 endfunc
 
-map ;y :!/mnt/c/Windows/System32/clip.exe<cr>u
-map ;p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
-map! ;p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
-map <F2> :Autoformat<cr>
-map <Leader>n :e  
+" 使用windows的剪贴板
+vmap ;y :!/mnt/c/Windows/System32/clip.exe<cr>u
+vmap ;p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
+nmap <F2> :Autoformat<cr>
+nmap <Leader>n :e
+
 
 " 完成补全后自动关闭函数原型提示窗口
-let g:ycm_autoclose_preview_window_after_completion=1 
-
+" let g:ycm_autoclose_preview_window_after_completion=1
+" 关闭ycm函数原型提示窗口
+set completeopt-=preview
 
 " 当vim打开一个目录时, nerdtree自动使用
 autocmd StdinReadPre * let s:std_in=1
@@ -221,14 +229,14 @@ let g:airline_right_sep="\uE0BE"
 let g:airline_left_alt_sep="\uE0BF"
 let g:airline_right_alt_sep="\uE0BF"
 
- 
-nnoremap <Leader>+ :exec "vert res ".(winwidth(0) * 11/10)<CR>
+
+nnoremap <Leader>= :exec "vert res ".(winwidth(0) * 11/10)<CR>
 nnoremap <leader>- :exec "vert res ".(winwidth(0) * 10/11)<CR>
 
-set timeoutlen=700
+set timeoutlen=200
 set ttimeoutlen=10
 
-nmap ss <Plug>(easymotion-s2)
+nmap f <Plug>(easymotion-s2)
 vnoremap d "_d
 vnoremap dd "_dd
 nnoremap d "_d
@@ -239,3 +247,9 @@ let g:fzf_preview_window='right:40%'
 
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
+function! NoEndSpaceFunc()
+    exec '%s/\s\+$//g'
+endfunc
+
+command! NoEndSpace call NoEndSpaceFunc()
