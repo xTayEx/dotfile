@@ -16,9 +16,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Chiel92/vim-autoformat'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'tpope/vim-surround'
-    "Plug 'machakann/vim-highlightedyank'
-    "Plug 'junegunn/goyo.vim'
-    "Plug 'liuchengxu/nerdtree-dash'
+    "Plug 'voldikss/vim-floaterm'
 call plug#end()
 if has("syntax")
   syntax on
@@ -109,7 +107,8 @@ nnoremap <Leader>7 :b7<cr>
 nnoremap <Leader>8 :b8<cr>
 nnoremap <Leader>9 :b9<cr>
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf=0
+let g:ycm_key_invoke_completion='<c-z>'
+"let g:ycm_confirm_extra_conf=0
 
 "let g:Lf_StlSeparator={'left': '', 'right': '', 'font:': 'consola NF'}
 
@@ -184,8 +183,9 @@ func! Settitle()
 endfunc
 
 " 使用windows的剪贴板
-vmap ;y :!/mnt/c/Windows/System32/clip.exe<cr>u
-vmap ;p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
+vmap `y :!/mnt/c/Windows/System32/clip.exe<cr>u
+nmap `p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
+map! `p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 nmap <F2> :Autoformat<cr>
 nmap <Leader>n :e
 
