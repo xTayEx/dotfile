@@ -85,9 +85,9 @@ let g:NERDTreeIndicatorMapCustom = {
 
 inoremap <C>[ <Esc>
 vnoremap <C>[ <Esc>
-nnoremap ww :w<cr>
-nnoremap qq :q<cr>
-nnoremap wwq :wq<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>wq :wq<cr>
 "map <Leader>ut :UndotreeToggle<cr>
 nnoremap <Leader>ve :edit /etc/vim/vimrc<cr>
 nnoremap <Leader>vs :source /etc/vim/vimrc<cr>
@@ -154,7 +154,6 @@ nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
-nmap :W :w
 
 func! Settitle()
     let l = 0
@@ -170,6 +169,7 @@ func! Settitle()
     let l = l + 1 | call setline(l, '#include <set>')
     let l = l + 1 | call setline(l, '#include <cctype>')
     let l = l + 1 | call setline(l, '#include <cmath>')
+    let l = l + 1 | call setline(l, '#include <unordered_map>')
     let l = l + 1 | call setline(l, '#define mst(a,b) memset((a),(b),sizeof(a))')
     let l = l + 1 | call setline(l, '#define debug printf("debug\n")')
     let l = l + 1 | call setline(l, '#define INF 0x3f3f3f3f')
@@ -218,17 +218,14 @@ if has("termguicolors")
     " fix bug for vim
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
     " enable true color
     set termguicolors
 endif
-
 
 let g:airline_left_sep="\uE0B8"
 let g:airline_right_sep="\uE0BE"
 let g:airline_left_alt_sep="\uE0BF"
 let g:airline_right_alt_sep="\uE0BF"
-
 
 nnoremap <Leader>= :exec "vert res ".(winwidth(0) * 11/10)<CR>
 nnoremap <leader>- :exec "vert res ".(winwidth(0) * 10/11)<CR>
