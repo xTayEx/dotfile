@@ -18,9 +18,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'voldikss/vim-floaterm'
     Plug 'vim/killersheep'
-    "Plug 'Shougo/defx.nvim'
-    "Plug 'roxma/nvim-yarp'
-    "Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'liuchengxu/vim-which-key', {'on': ['WhichKey', 'WhichKey!']}
+    "Plug 'makerj/vim-pdf'
 call plug#end()
 if has("syntax")
   syntax on
@@ -36,6 +35,7 @@ set backspace=2
 set nowrap
 set sidescroll=0
 set number
+set ignorecase
 syntax on
 let g:airline_theme='molokai'
 set background=dark
@@ -65,7 +65,8 @@ let mapleader=','
 set encoding=utf8
 set termencoding=utf-8
 let g:NERDCreateDeafultMappings=0
-map <F3> :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
+"nnoremap <F3> :CocCommand explorer --toggle<cr>
 let g:startify_custom_header=
         \ startify#center([
         \ '   __  __                      ____                    __      __      ',
@@ -99,7 +100,6 @@ nnoremap <Leader>vs :source ~/.vimrc<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>t :FloatermNew<cr>
 nnoremap <C-N> :bn<cr>
 nnoremap <C-P> :bp<cr>
 nnoremap <Leader>bd :bd<cr>
@@ -112,11 +112,6 @@ nnoremap <Leader>6 :b6<cr>
 nnoremap <Leader>7 :b7<cr>
 nnoremap <Leader>8 :b8<cr>
 nnoremap <Leader>9 :b9<cr>
-"let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"let g:ycm_key_invoke_completion='<c-z>'
-"let g:ycm_confirm_extra_conf=0
-
-"let g:Lf_StlSeparator={'left': '', 'right': '', 'font:': 'consola NF'}
 
 let g:coc_node_path = '/home/xtayex/.nvm/versions/node/v12.18.0/bin/node'
 map <F8> :call GenerateTags()<cr>
@@ -149,7 +144,6 @@ func! Compile()
         echo 'Not a cpp or c file'
     endif
 endfunc
-
 
 nmap <F12> :call Settitle()<cr>Gi
 nmap <leader>a ggvG$
@@ -196,10 +190,6 @@ nmap <F2> :Autoformat<cr>
 nmap <Leader>n :e
 
 
-" 完成补全后自动关闭函数原型提示窗口
-" let g:ycm_autoclose_preview_window_after_completion=1
-" 关闭ycm函数原型提示窗口
-set completeopt-=preview
 
 " 当vim打开一个目录时, nerdtree自动使用
 autocmd StdinReadPre * let s:std_in=1
@@ -248,7 +238,7 @@ nnoremap dd "_dd
 set wildmenu
 
 let g:fzf_preview_window='right:40%'
-let g:fzf_layout={'window': {'width': 0.9, 'height': 0.6}}
+let g:fzf_layout={'window': { 'width': 0.9, 'height': 0.7 }}
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}'], 'window': {'width': 0.9, 'height': 0.6}}, <bang>0)
 
@@ -259,3 +249,18 @@ endfunc
 command! NoEndSpace call NoEndSpaceFunc()
 
 nnoremap <leader>y :<C-u>CocList -A --normal yank<cr>
+
+" floaterm
+let g:floaterm_keymap_new = '<F6>'
+let g:floaterm_keymap_prev = '<F7>'
+let g:floaterm_keymap_next = '<F8>'
+
+" coc-bookmark configuration
+" begin
+nmap <leader>m <plug>(coc-bookmark-toggle)
+nmap <leader>j <plug>(coc-bookmark-next)
+nmap <leader>k <plug>(coc-bookmark-prev)
+" end
+
+" open CocCommand
+nnoremap <c-c> :CocCommand<cr>
