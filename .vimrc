@@ -1,26 +1,28 @@
 runtime! debian.vim
 
+" plugin list begin
 call plug#begin('~/.vim/plugged')
-    Plug 'easymotion/vim-easymotion'
-    Plug 'preservim/nerdcommenter'
-    Plug '~/.fzf'
-    Plug 'junegunn/fzf.vim'
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'mhinz/vim-startify'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'preservim/nerdtree'
-    Plug 'Yggdroot/indentLine', {'for': ['python', 'cpp']}
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'Chiel92/vim-autoformat'
-    Plug 'octol/vim-cpp-enhanced-highlight'
-    Plug 'tpope/vim-surround'
-    Plug 'voldikss/vim-floaterm'
-    Plug 'vim/killersheep'
-    Plug 'liuchengxu/vim-which-key', {'on': ['WhichKey', 'WhichKey!']}
-    "Plug 'makerj/vim-pdf'
+Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdcommenter'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mhinz/vim-startify'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
+Plug 'Yggdroot/indentLine', {'for': ['python', 'cpp']}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ryanoasis/vim-devicons'
+Plug 'Chiel92/vim-autoformat'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'tpope/vim-surround'
+Plug 'voldikss/vim-floaterm'
+Plug 'vim/killersheep'
+Plug 'liuchengxu/vim-which-key', {'on': ['WhichKey', 'WhichKey!']}
+"Plug 'makerj/vim-pdf'
 call plug#end()
+" plugin list end
 if has("syntax")
   syntax on
 endif
