@@ -20,7 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 Plug 'vim/killersheep'
 Plug 'liuchengxu/vim-which-key', {'on': ['WhichKey', 'WhichKey!']}
-"Plug 'makerj/vim-pdf'
+Plug 'liuchengxu/space-vim-theme'
 call plug#end()
 " plugin list end
 if has("syntax")
@@ -125,7 +125,7 @@ map <F11> :call CompileAndRun()<cr>
 func! CompileAndRun()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
-        exec '!g++ -Wall -std=c++11 % -o %<'
+        exec '!g++ -Wall -std=c++11 -g % -o %<'
         exec '!./%<'
     else
         echo 'Not a cpp or c file'
@@ -156,6 +156,8 @@ nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
+nmap J j
+nmap K k
 
 func! Settitle()
     let l = 0
