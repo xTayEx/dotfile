@@ -21,6 +21,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'vim/killersheep'
 Plug 'liuchengxu/vim-which-key', {'on': ['WhichKey', 'WhichKey!']}
 Plug 'liuchengxu/space-vim-theme'
+Plug 'mbbill/undotree'
 call plug#end()
 " plugin list end
 if has("syntax")
@@ -268,3 +269,6 @@ nmap <leader>k <plug>(coc-bookmark-prev)
 
 " open CocCommand
 nnoremap <c-c> :CocCommand<cr>
+
+" undotree
+nnoremap UT :UndotreeToggle<cr>
