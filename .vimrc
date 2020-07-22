@@ -272,3 +272,5 @@ nnoremap <c-c> :CocCommand<cr>
 
 " undotree
 nnoremap UT :UndotreeToggle<cr>
+
+command Clear !clear
