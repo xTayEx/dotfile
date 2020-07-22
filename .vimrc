@@ -24,6 +24,7 @@ Plug 'liuchengxu/space-vim-theme'
 Plug 'mbbill/undotree'
 call plug#end()
 " plugin list end
+
 if has("syntax")
   syntax on
 endif
@@ -93,8 +94,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-inoremap <C>[ <Esc>
-vnoremap <C>[ <Esc>
+inoremap <C-[> <Esc>
+vnoremap <C-[> <Esc>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>wq :wq<cr>
@@ -126,7 +127,7 @@ map <F11> :call CompileAndRun()<cr>
 func! CompileAndRun()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
-        exec '!g++ -Wall -std=c++11 -g % -o %<'
+        exec '!g++ -Wall -std=c++11 -g -o2 % -o %<'
         exec '!./%<'
     else
         echo 'Not a cpp or c file'
