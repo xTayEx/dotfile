@@ -70,7 +70,6 @@ set encoding=utf8
 set termencoding=utf-8
 let g:NERDCreateDeafultMappings=0
 nnoremap <F3> :NERDTreeToggle<CR>
-"nnoremap <F3> :CocCommand explorer --toggle<cr>
 let g:startify_custom_header=
         \ startify#center([
         \ '   __  __                      ____                    __      __      ',
@@ -81,6 +80,7 @@ let g:startify_custom_header=
         \ '     \ `\___/\ \_\ \_\ \_\ \_\   \ \_\ \_\ \____/\ \____\\ \_\ \_\/\_\ ',
         \ '      `\/__/  \/_/\/_/\/_/\/_/    \/_/\/ /\/___/  \/____/ \/_/\/_/\/_/ '
         \])
+
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "M",
     \ "Staged"    : "+",
@@ -94,8 +94,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-inoremap <C-[> <Esc>
-vnoremap <C-[> <Esc>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>wq :wq<cr>
