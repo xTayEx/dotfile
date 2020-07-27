@@ -22,6 +22,7 @@ Plug 'vim/killersheep'
 Plug 'liuchengxu/vim-which-key', {'on': ['WhichKey', 'WhichKey!']}
 Plug 'liuchengxu/space-vim-theme'
 Plug 'mbbill/undotree'
+Plug 'farmergreg/vim-lastplace'
 call plug#end()
 " plugin list end
 
@@ -126,7 +127,7 @@ func! CompileAndRun()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
         exec '!g++ -Wall -std=c++11 -g -o2 % -o %<'
-        exec '!./%<'
+        exec '!time ./%<'
     else
         echo 'Not a cpp or c file'
     endif
@@ -134,14 +135,14 @@ endfunc
 
 map <F10> :call Run()<cr>
 func! Run()
-    exec '!./%<'
+    exec '!time ./%<'
 endfunc
 
 map <F9> :call Compile()<cr>
 func! Compile()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
-        exec '!g++ -Wall -std=c++11 % -o %<'
+        exec '!g++ -Wall -std=c++11 -g -o2 % -o %<'
     else
         echo 'Not a cpp or c file'
     endif
@@ -272,4 +273,6 @@ nnoremap <c-c> :CocCommand<cr>
 " undotree
 nnoremap UT :UndotreeToggle<cr>
 
-command Clear !clear
+command Clear !clear<cr>
+
+let g:lastplace_ignore_buftype="quickfix,nofile,help"
