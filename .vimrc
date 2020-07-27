@@ -273,6 +273,6 @@ nnoremap <c-c> :CocCommand<cr>
 " undotree
 nnoremap UT :UndotreeToggle<cr>
 
-command Clear !clear<cr>
+command Clear !clear
 
 let g:lastplace_ignore_buftype="quickfix,nofile,help"
