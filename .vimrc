@@ -82,18 +82,18 @@ let g:startify_custom_header=
         \ '      `\/__/  \/_/\/_/\/_/\/_/    \/_/\/ /\/___/  \/____/ \/_/\/_/\/_/ '
         \])
 
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "M",
-    \ "Staged"    : "+",
-    \ "Untracked" : "*",
-    \ "Renamed"   : "→",
-    \ "Unmerged"  : "=",
-    \ "Deleted"   : "×",
-    \ "Dirty"     : "D",
-    \ "Clean"     : "C",
-    \ 'Ignored'   : "I",
-    \ "Unknown"   : "?"
-    \ }
+"let g:NERDTreeIndicatorMapCustom = {
+    "\ "Modified"  : "M",
+    "\ "Staged"    : "+",
+    "\ "Untracked" : "*",
+    "\ "Renamed"   : "→",
+    "\ "Unmerged"  : "=",
+    "\ "Deleted"   : "×",
+    "\ "Dirty"     : "D",
+    "\ "Clean"     : "C",
+    "\ 'Ignored'   : "I",
+    "\ "Unknown"   : "?"
+    "\ }
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
@@ -128,14 +128,22 @@ func! CompileAndRun()
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
         exec '!g++ -Wall -std=c++11 -g -o2 % -o %<'
         exec '!time ./%<'
+    elseif &filetype is 'python'
+        exec '!python3 %'
     else
-        echo 'Not a cpp or c file'
+        echo 'This file cannot be run'
     endif
 endfunc
 
 map <F10> :call Run()<cr>
 func! Run()
-    exec '!time ./%<'
+    if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
+        exec '!time ./%<'
+    elseif &filetype is 'python'
+        exec '!python3 %'
+    else
+        echo 'This file cannot be run'
+    endif
 endfunc
 
 map <F9> :call Compile()<cr>
