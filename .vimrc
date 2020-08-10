@@ -27,17 +27,18 @@ call plug#end()
 " plugin list end
 
 if has("syntax")
-  syntax on
+    syntax on
 endif
 set laststatus=2
 
 if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
+    source /etc/vim/vimrc.local
 endif
 
+set cursorline
 set backspace=indent,eol,start
 set backspace=2
-set nowrap
+"set nowrap
 set sidescroll=0
 set number
 set ignorecase
@@ -72,28 +73,28 @@ set termencoding=utf-8
 let g:NERDCreateDeafultMappings=0
 nnoremap <F3> :NERDTreeToggle<CR>
 let g:startify_custom_header=
-        \ startify#center([
-        \ '   __  __                      ____                    __      __      ',
-        \ '  /\ \/\ \  __                /\  __`\                /\ \    /\ \     ',
-        \ "  \\ \\ \\ \\ \\/\\_\\   ___ ___     \\ \\ \\_\\ \\    ___     ___\\ \\ \\/'\\\\ \\ \\    ",
-        \ "   \\ \\ \\ \\ \\/\\ \\ /' __` __`\\   \\ \\ ,  /   / __`\\  /'___\\ \\ , < \\ \\ \\   ",
-        \ '    \ \ \_/ \ \ \/\ \/\ \/\ \   \ \ \\ \ /\ \_\ \/\ \__/\ \ \\`\\ \_\  ',
-        \ '     \ `\___/\ \_\ \_\ \_\ \_\   \ \_\ \_\ \____/\ \____\\ \_\ \_\/\_\ ',
-        \ '      `\/__/  \/_/\/_/\/_/\/_/    \/_/\/ /\/___/  \/____/ \/_/\/_/\/_/ '
-        \])
+            \ startify#center([
+            \ '   __  __                      ____                    __      __      ',
+            \ '  /\ \/\ \  __                /\  __`\                /\ \    /\ \     ',
+            \ "  \\ \\ \\ \\ \\/\\_\\   ___ ___     \\ \\ \\_\\ \\    ___     ___\\ \\ \\/'\\\\ \\ \\    ",
+            \ "   \\ \\ \\ \\ \\/\\ \\ /' __` __`\\   \\ \\ ,  /   / __`\\  /'___\\ \\ , < \\ \\ \\   ",
+            \ '    \ \ \_/ \ \ \/\ \/\ \/\ \   \ \ \\ \ /\ \_\ \/\ \__/\ \ \\`\\ \_\  ',
+            \ '     \ `\___/\ \_\ \_\ \_\ \_\   \ \_\ \_\ \____/\ \____\\ \_\ \_\/\_\ ',
+            \ '      `\/__/  \/_/\/_/\/_/\/_/    \/_/\/ /\/___/  \/____/ \/_/\/_/\/_/ '
+            \])
 
 "let g:NERDTreeIndicatorMapCustom = {
-    "\ "Modified"  : "M",
-    "\ "Staged"    : "+",
-    "\ "Untracked" : "*",
-    "\ "Renamed"   : "→",
-    "\ "Unmerged"  : "=",
-    "\ "Deleted"   : "×",
-    "\ "Dirty"     : "D",
-    "\ "Clean"     : "C",
-    "\ 'Ignored'   : "I",
-    "\ "Unknown"   : "?"
-    "\ }
+            "\ "Modified"  : "M",
+            "\ "Staged"    : "+",
+            "\ "Untracked" : "*",
+            "\ "Renamed"   : "→",
+            "\ "Unmerged"  : "=",
+            "\ "Deleted"   : "×",
+            "\ "Dirty"     : "D",
+            "\ "Clean"     : "C",
+            "\ 'Ignored'   : "I",
+            "\ "Unknown"   : "?"
+            "\ }
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
@@ -184,7 +185,8 @@ func! Settitle()
     let l = l + 1 | call setline(l, '#include <cmath>')
     let l = l + 1 | call setline(l, '#include <unordered_map>')
     let l = l + 1 | call setline(l, '#define mst(a,b) memset((a),(b),sizeof(a))')
-    let l = l + 1 | call setline(l, '#define debug printf("debug\n")')
+    let l = l + 1 | call setline(l, '#define idebug(x) printf("%s = %d\n",#x,x)')
+    let l = l + 1 | call setline(l, '#define ddebug(x) printf("%s = %lf\n",#x,x)')
     let l = l + 1 | call setline(l, '#define INF 0x3f3f3f3f')
     let l = l + 1 | call setline(l, '#define lson lef,mid,rt<<1')
     let l = l + 1 | call setline(l, '#define rson mid+1,rig,rt<<1|1')
