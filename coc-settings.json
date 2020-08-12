@@ -1,0 +1,8 @@
+{
+    "npm.binPath": "~/.nvm/versions/node/v12.18.0/bin/npm",
+    "python.jediEnabled": false,
+    "bookmark.sign": "🔖",
+    "bookmark.signHl": "Tag",
+    "tsserver.npm": "~/.nvm/versions/node/v12.18.0/bin/npm",
+    "javascript.suggestionActions.enabled": false
+}
