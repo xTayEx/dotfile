@@ -23,6 +23,8 @@ Plug 'liuchengxu/vim-which-key', {'on': ['WhichKey', 'WhichKey!']}
 Plug 'liuchengxu/space-vim-theme'
 Plug 'mbbill/undotree'
 Plug 'farmergreg/vim-lastplace'
+Plug 'junegunn/vim-easy-align'
+Plug 'francoiscabrol/ranger.vim'
 call plug#end()
 " plugin list end
 
@@ -198,13 +200,11 @@ func! Settitle()
 endfunc
 
 " 使用windows的剪贴板
-vmap `y :!/mnt/c/Windows/System32/clip.exe<cr>u
-nmap `p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
-map! `p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
+vmap <leader>y :!/mnt/c/Windows/System32/clip.exe<cr>u
+nmap <leader>p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
+map! <leader>p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 nmap <F2> :Autoformat<cr>
 nmap <Leader>n :e
-
-
 
 " 当vim打开一个目录时, nerdtree自动使用
 autocmd StdinReadPre * let s:std_in=1
@@ -241,7 +241,7 @@ let g:airline_right_alt_sep="\uE0BF"
 nnoremap <Leader>= :exec "vert res ".(winwidth(0) * 11/10)<CR>
 nnoremap <leader>- :exec "vert res ".(winwidth(0) * 10/11)<CR>
 
-set timeoutlen=200
+set timeoutlen=500
 set ttimeoutlen=10
 set incsearch
 
@@ -263,7 +263,7 @@ endfunc
 
 command! NoEndSpace call NoEndSpaceFunc()
 
-nnoremap <leader>y :<C-u>CocList -A --normal yank<cr>
+"nnoremap <leader>y :<C-u>CocList -A --normal yank<cr>
 
 " floaterm
 let g:floaterm_keymap_new = '<F6>'
@@ -286,3 +286,34 @@ nnoremap UT :UndotreeToggle<cr>
 command Clear !clear
 
 let g:lastplace_ignore_buftype="quickfix,nofile,help"
+let g:airline#extensions#coc#enabled=1
+
+" vim-easy-align
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+
+let g:easy_align_delimiters = {
+\ '>': { 'pattern': '>>\|=>\|>' },
+\ '/': {
+\     'pattern':         '//\+\|/\*\|\*/',
+\     'delimiter_align': 'l',
+\     'ignore_groups':   ['!Comment'] },
+\ ']': {
+\     'pattern':       '[[\]]',
+\     'left_margin':   0,
+\     'right_margin':  0,
+\     'stick_to_left': 0
+\   },
+\ ')': {
+\     'pattern':       '[()]',
+\     'left_margin':   0,
+\     'right_margin':  0,
+\     'stick_to_left': 0
+\   },
+\ 'd': {
+\     'pattern':      ' \(\S\+\s*[;=]\)\@=',
+\     'left_margin':  0,
+\     'right_margin': 0
+\   }
+\ }
