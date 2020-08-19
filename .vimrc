@@ -329,3 +329,6 @@ nmap <leader>r :Ranger<cr>
 " vista.vim
 "let g:vista_default_executive='coc'
 "let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" set the maximum number of items to show in the popop menu for Insert mode completion
+set pumheight=20
