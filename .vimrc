@@ -25,6 +25,7 @@ Plug 'mbbill/undotree'
 Plug 'farmergreg/vim-lastplace'
 Plug 'junegunn/vim-easy-align'
 Plug 'francoiscabrol/ranger.vim'
+"Plug 'liuchengxu/vista.vim'
 call plug#end()
 " plugin list end
 
@@ -200,9 +201,9 @@ func! Settitle()
 endfunc
 
 " 使用windows的剪贴板
-vmap <leader>y :!/mnt/c/Windows/System32/clip.exe<cr>u
-nmap <leader>p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
-map! <leader>p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
+vmap `y :!/mnt/c/Windows/System32/clip.exe<cr>u
+nmap `p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
+map! `p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 nmap <F2> :Autoformat<cr>
 nmap <Leader>n :e
 
@@ -317,3 +318,14 @@ let g:easy_align_delimiters = {
 \     'right_margin': 0
 \   }
 \ }
+
+" clang-format: short if statement
+let g:formatdef_my_custom_cpp='"clang-format -style=file"'
+let g:formatters_cpp = ['my_custom_cpp']
+
+" ranger.vim
+nmap <leader>r :Ranger<cr>
+
+" vista.vim
+"let g:vista_default_executive='coc'
+"let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
