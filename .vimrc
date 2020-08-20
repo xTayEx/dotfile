@@ -188,7 +188,7 @@ func! Settitle()
     let l = l + 1 | call setline(l, '#include <cmath>')
     let l = l + 1 | call setline(l, '#include <unordered_map>')
     let l = l + 1 | call setline(l, '#define mst(a,b) memset((a),(b),sizeof(a))')
-    let l = l + 1 | call setline(l, '#define debug(x) cerr << #x << " = " << x')
+    let l = l + 1 | call setline(l, '#define debug(x) cerr << #x << " = " << x << "\n"')
     let l = l + 1 | call setline(l, '#define INF 0x3f3f3f3f')
     let l = l + 1 | call setline(l, '#define lson lef,mid,rt<<1')
     let l = l + 1 | call setline(l, '#define rson mid+1,rig,rt<<1|1')
@@ -331,3 +331,10 @@ nmap <leader>r :Ranger<cr>
 
 " set the maximum number of items to show in the popop menu for Insert mode completion
 set pumheight=20
+
+" coc-yank
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
+
+" coc.nvim jump to error
+nnoremap <silent> ne :call CocAction('diagnosticNext')<cr>
+nnoremap <silent> pe :call CocAction('diagnosticPrevious')<cr>
