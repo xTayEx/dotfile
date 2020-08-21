@@ -338,3 +338,12 @@ nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 " coc.nvim jump to error
 nnoremap <silent> ne :call CocAction('diagnosticNext')<cr>
 nnoremap <silent> pe :call CocAction('diagnosticPrevious')<cr>
+
+" auto-pairs
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`", '<':'>'}
+
+" coc-vimlsp
+let g:markdown_fenced_languages = [
+    \ 'vim',
+    \ 'help'
+    \]
