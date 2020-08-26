@@ -25,7 +25,6 @@ Plug 'mbbill/undotree'
 Plug 'farmergreg/vim-lastplace'
 Plug 'junegunn/vim-easy-align'
 Plug 'francoiscabrol/ranger.vim'
-"Plug 'liuchengxu/vista.vim'
 call plug#end()
 " plugin list end
 
@@ -182,7 +181,7 @@ func! Settitle()
     let l = l + 1 | call setline(l, '#include <vector>')
     let l = l + 1 | call setline(l, '#include <map>')
     let l = l + 1 | call setline(l, '#include <stack>')
-    let l = l + 1 | call setline(l ,'#include <queue>')
+    let l = l + 1 | call setline(l, '#include <queue>')
     let l = l + 1 | call setline(l, '#include <set>')
     let l = l + 1 | call setline(l, '#include <cctype>')
     let l = l + 1 | call setline(l, '#include <cmath>')
@@ -204,7 +203,6 @@ vmap `y :!/mnt/c/Windows/System32/clip.exe<cr>u
 nmap `p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 map! `p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 nmap <F2> :Autoformat<cr>
-nmap <Leader>n :e
 
 " 当vim打开一个目录时, nerdtree自动使用
 autocmd StdinReadPre * let s:std_in=1
@@ -320,10 +318,11 @@ let g:easy_align_delimiters = {
 
 " clang-format: short if statement
 let g:formatdef_my_custom_cpp='"clang-format -style=file"'
-let g:formatters_cpp = ['my_custom_cpp']
+let g:formatters_cpp=['my_custom_cpp']
 
 " ranger.vim
-nmap <leader>r :Ranger<cr>
+let g:ranger_map_keys=0
+nnoremap <leader>r :Ranger<cr>
 
 " vista.vim
 "let g:vista_default_executive='coc'
@@ -339,11 +338,12 @@ nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nnoremap <silent> ne :call CocAction('diagnosticNext')<cr>
 nnoremap <silent> pe :call CocAction('diagnosticPrevious')<cr>
 
-" auto-pairs
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`", '<':'>'}
 
 " coc-vimlsp
 let g:markdown_fenced_languages = [
     \ 'vim',
     \ 'help'
     \]
+
+" termdebug
+let g:termdebug_wide=1
