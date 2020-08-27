@@ -324,20 +324,21 @@ let g:formatters_cpp=['my_custom_cpp']
 let g:ranger_map_keys=0
 nnoremap <leader>r :Ranger<cr>
 
-" vista.vim
-"let g:vista_default_executive='coc'
-"let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-
 " set the maximum number of items to show in the popop menu for Insert mode completion
 set pumheight=20
 
 " coc-yank
 nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 
+" coc.nvim navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
 " coc.nvim jump to error
 nnoremap <silent> ne :call CocAction('diagnosticNext')<cr>
 nnoremap <silent> pe :call CocAction('diagnosticPrevious')<cr>
-
 
 " coc-vimlsp
 let g:markdown_fenced_languages = [
