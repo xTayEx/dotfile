@@ -42,6 +42,7 @@ set backspace=indent,eol,start
 set backspace=2
 "set nowrap
 set sidescroll=0
+set rnu
 set number
 set ignorecase
 syntax on
@@ -118,6 +119,8 @@ nnoremap <Leader>6 :b6<cr>
 nnoremap <Leader>7 :b7<cr>
 nnoremap <Leader>8 :b8<cr>
 nnoremap <Leader>9 :b9<cr>
+nnoremap J 3j
+nnoremap K 3k
 
 let g:coc_node_path = '/home/xtayex/.nvm/versions/node/v12.18.0/bin/node'
 map <F8> :call GenerateTags()<cr>
@@ -168,8 +171,6 @@ nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
-nmap J j
-nmap K k
 
 func! Settitle()
     let l = 0
