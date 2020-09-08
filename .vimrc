@@ -91,19 +91,6 @@ let g:startify_custom_header=
             \'  ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝'
             \])
 
-"let g:NERDTreeIndicatorMapCustom = {
-            "\ "Modified"  : "M",
-            "\ "Staged"    : "+",
-            "\ "Untracked" : "*",
-            "\ "Renamed"   : "→",
-            "\ "Unmerged"  : "=",
-            "\ "Deleted"   : "×",
-            "\ "Dirty"     : "D",
-            "\ "Clean"     : "C",
-            "\ 'Ignored'   : "I",
-            "\ "Unknown"   : "?"
-            "\ }
-
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>wq :wq<cr>
