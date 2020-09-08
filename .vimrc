@@ -1,3 +1,9 @@
+" ___    ______________  ___________________
+" __ |  / /___  _/__   |/  /__  __ \_  ____/
+" __ | / / __  / __  /|_/ /__  /_/ /  /     
+" __ |/ / __/ /  _  /  / / _  _, _// /___   
+" _____/  /___/  /_/  /_/  /_/ |_| \____/   
+                                          
 runtime! debian.vim
 
 " plugin list begin
@@ -77,13 +83,12 @@ let g:NERDCreateDeafultMappings=0
 nnoremap <F3> :NERDTreeToggle<CR>
 let g:startify_custom_header=
             \ startify#center([
-            \ '   __  __                      ____                    __      __      ',
-            \ '  /\ \/\ \  __                /\  __`\                /\ \    /\ \     ',
-            \ "  \\ \\ \\ \\ \\/\\_\\   ___ ___     \\ \\ \\_\\ \\    ___     ___\\ \\ \\/'\\\\ \\ \\    ",
-            \ "   \\ \\ \\ \\ \\/\\ \\ /' __` __`\\   \\ \\ ,  /   / __`\\  /'___\\ \\ , < \\ \\ \\   ",
-            \ '    \ \ \_/ \ \ \/\ \/\ \/\ \   \ \ \\ \ /\ \_\ \/\ \__/\ \ \\`\\ \_\  ',
-            \ '     \ `\___/\ \_\ \_\ \_\ \_\   \ \_\ \_\ \____/\ \____\\ \_\ \_\/\_\ ',
-            \ '      `\/__/  \/_/\/_/\/_/\/_/    \/_/\/ /\/___/  \/____/ \/_/\/_/\/_/ '
+            \'██╗   ██╗██╗███╗   ███╗██████╗  ██████╗  ██████╗██╗  ██╗',
+            \'██║   ██║██║████╗ ████║██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝',
+            \'██║   ██║██║██╔████╔██║██████╔╝██║   ██║██║     █████╔╝ ',
+            \'╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║   ██║██║     ██╔═██╗ ',
+            \' ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╔╝╚██████╗██║  ██╗',
+            \'  ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝'
             \])
 
 "let g:NERDTreeIndicatorMapCustom = {
@@ -271,9 +276,9 @@ let g:floaterm_keymap_next = '<F8>'
 
 " coc-bookmark configuration
 " begin
-nmap <leader>m <plug>(coc-bookmark-toggle)
-nmap <leader>j <plug>(coc-bookmark-next)
-nmap <leader>k <plug>(coc-bookmark-prev)
+nmap <leader>mm <plug>(coc-bookmark-toggle)
+nmap <leader>nm <plug>(coc-bookmark-next)
+nmap <leader>pm <plug>(coc-bookmark-prev)
 " end
 
 " open CocCommand
@@ -349,3 +354,13 @@ let g:markdown_fenced_languages = [
 
 " termdebug
 let g:termdebug_wide=1
+
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nmap <Leader>cn :<C-u>DashboardNewFile<CR>
+nnoremap <silent> <Leader>fh :History<CR>
+nnoremap <silent> <Leader>ff :Files<CR>
+nnoremap <silent> <Leader>tc :Colors<CR>
+nnoremap <silent> <Leader>fa :Rg<CR>
+nnoremap <silent> <Leader>fb :Marks<CR>
+nnoremap <silent> <Leader>cn :<C-u>DashboardNewFile<CR>
