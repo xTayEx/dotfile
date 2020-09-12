@@ -1,9 +1,9 @@
 " ___    ______________  ___________________
 " __ |  / /___  _/__   |/  /__  __ \_  ____/
-" __ | / / __  / __  /|_/ /__  /_/ /  /     
-" __ |/ / __/ /  _  /  / / _  _, _// /___   
-" _____/  /___/  /_/  /_/  /_/ |_| \____/   
-                                          
+" __ | / / __  / __  /|_/ /__  /_/ /  /
+" __ |/ / __/ /  _  /  / / _  _, _// /___
+" _____/  /___/  /_/  /_/  /_/ |_| \____/
+
 runtime! debian.vim
 
 " plugin list begin
@@ -31,6 +31,7 @@ Plug 'mbbill/undotree'
 Plug 'farmergreg/vim-lastplace'
 Plug 'junegunn/vim-easy-align'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'sillybun/vim-repl'
 call plug#end()
 " plugin list end
 
@@ -285,29 +286,29 @@ xmap ga <Plug>(EasyAlign)
 
 
 let g:easy_align_delimiters = {
-\ '>': { 'pattern': '>>\|=>\|>' },
-\ '/': {
-\     'pattern':         '//\+\|/\*\|\*/',
-\     'delimiter_align': 'l',
-\     'ignore_groups':   ['!Comment'] },
-\ ']': {
-\     'pattern':       '[[\]]',
-\     'left_margin':   0,
-\     'right_margin':  0,
-\     'stick_to_left': 0
-\   },
-\ ')': {
-\     'pattern':       '[()]',
-\     'left_margin':   0,
-\     'right_margin':  0,
-\     'stick_to_left': 0
-\   },
-\ 'd': {
-\     'pattern':      ' \(\S\+\s*[;=]\)\@=',
-\     'left_margin':  0,
-\     'right_margin': 0
-\   }
-\ }
+            \ '>': { 'pattern': '>>\|=>\|>' },
+            \ '/': {
+            \     'pattern':         '//\+\|/\*\|\*/',
+            \     'delimiter_align': 'l',
+            \     'ignore_groups':   ['!Comment'] },
+            \ ']': {
+            \     'pattern':       '[[\]]',
+            \     'left_margin':   0,
+            \     'right_margin':  0,
+            \     'stick_to_left': 0
+            \   },
+            \ ')': {
+            \     'pattern':       '[()]',
+            \     'left_margin':   0,
+            \     'right_margin':  0,
+            \     'stick_to_left': 0
+            \   },
+            \ 'd': {
+            \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
+            \     'left_margin':  0,
+            \     'right_margin': 0
+            \   }
+            \ }
 
 " clang-format: short if statement
 let g:formatdef_my_custom_cpp='"clang-format -style=file"'
@@ -334,20 +335,24 @@ nnoremap <silent> ne :call CocAction('diagnosticNext')<cr>
 nnoremap <silent> pe :call CocAction('diagnosticPrevious')<cr>
 
 " coc-vimlsp
-let g:markdown_fenced_languages = [
-    \ 'vim',
-    \ 'help'
-    \]
+let g:markdown_fenced_languages=[
+            \ 'vim',
+            \ 'help'
+            \]
 
 " termdebug
 let g:termdebug_wide=1
 
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
-nmap <Leader>cn :<C-u>DashboardNewFile<CR>
-nnoremap <silent> <Leader>fh :History<CR>
-nnoremap <silent> <Leader>ff :Files<CR>
-nnoremap <silent> <Leader>tc :Colors<CR>
-nnoremap <silent> <Leader>fa :Rg<CR>
-nnoremap <silent> <Leader>fb :Marks<CR>
-nnoremap <silent> <Leader>cn :<C-u>DashboardNewFile<CR>
+" vim-repl
+let g:sendtorepl_invoke_key="<leader>w"
+let g:repl_position=3
+let g:repl_program={
+            \ 'python': 'python3',
+            \ 'default': 'zsh',
+            \ 'vim': 'vim -e'
+            \}
+let g:repl_predefine_python={
+            \ 'numpy': 'import numpy as np',
+            \ 'matplotlib': 'import matplotlib.pyplot as plt'
+            \}
+let g:repl_python_automerge=0
