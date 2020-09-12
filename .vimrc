@@ -32,6 +32,9 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'junegunn/vim-easy-align'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'sillybun/vim-repl'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'dstein64/vim-startuptime'
 call plug#end()
 " plugin list end
 
@@ -53,9 +56,9 @@ set rnu
 set number
 set ignorecase
 syntax on
-let g:airline_theme='molokai'
+let g:airline_theme='onedark'
 set background=dark
-colorscheme monokai
+colorscheme onedark
 set mouse=a
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin1
 set termencoding=utf-8
@@ -66,10 +69,10 @@ set tabstop=4
 set expandtab
 set softtabstop=4
 set smarttab
+set shiftwidth=4
 set showmatch
 filetype on
 filetype plugin on
-set shiftwidth=4
 set linespace=0
 set noshowmode
 set nobackup
@@ -356,3 +359,4 @@ let g:repl_predefine_python={
             \ 'matplotlib': 'import matplotlib.pyplot as plt'
             \}
 let g:repl_python_automerge=0
+let g:onedark_terminal_italics=1
