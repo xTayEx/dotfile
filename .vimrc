@@ -360,3 +360,6 @@ let g:repl_predefine_python={
             \}
 let g:repl_python_automerge=0
 let g:onedark_terminal_italics=1
+
+" set the indent width of javascript
+autocmd FileType javascript setlocal et sta sw=2 sts=2
