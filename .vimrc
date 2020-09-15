@@ -35,6 +35,7 @@ Plug 'sillybun/vim-repl'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dstein64/vim-startuptime'
+"Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 call plug#end()
 " plugin list end
 
@@ -363,3 +364,7 @@ let g:onedark_terminal_italics=1
 
 " set the indent width of javascript
 autocmd FileType javascript setlocal et sta sw=2 sts=2
+
+" coc-translator
+nmap <leader>t <Plug>(coc-translator-p)
+vmap <leader>t <Plug>(coc-translator-pv)
