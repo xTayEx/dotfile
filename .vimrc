@@ -185,7 +185,7 @@ func! Settitle()
     let l = l + 1 | call setline(l, '#include <cmath>')
     let l = l + 1 | call setline(l, '#include <unordered_map>')
     let l = l + 1 | call setline(l, '#define mst(a,b) memset((a),(b),sizeof(a))')
-    let l = l + 1 | call setline(l, '#define debug(x) cerr << #x << " = " << x << "\n"')
+    let l = l + 1 | call setline(l, '#define debug(x) cerr << "\033[01;31m" << #x << " = " << x << "\033[0m" << "\n"')
     let l = l + 1 | call setline(l, '#define INF 0x3f3f3f3f')
     let l = l + 1 | call setline(l, '#define lson lef,mid,rt<<1')
     let l = l + 1 | call setline(l, '#define rson mid+1,rig,rt<<1|1')
@@ -363,7 +363,7 @@ let g:repl_python_automerge=0
 let g:onedark_terminal_italics=1
 
 " set the indent width of javascript
-autocmd FileType javascript setlocal et sta sw=2 sts=2
+"autocmd FileType javascript setlocal et sta sw=2 sts=2
 
 " coc-translator
 nmap <leader>t <Plug>(coc-translator-p)
