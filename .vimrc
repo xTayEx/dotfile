@@ -129,7 +129,7 @@ map <F11> :call CompileAndRun()<cr>
 func! CompileAndRun()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
-        exec '!g++ -Wall -std=c++11 -g -o2 % -o %<'
+        exec '!g++ -Wall -std=gnu++11 -g -o2 % -o %<'
         exec '!time ./%<'
     elseif &filetype is 'python'
         exec '!python3 %'
@@ -153,7 +153,7 @@ map <F9> :call Compile()<cr>
 func! Compile()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
-        exec '!g++ -Wall -std=c++11 -g -o2 % -o %<'
+        exec '!g++ -Wall -std=gnu++11 -g -o2 % -o %<'
     else
         echo 'Not a cpp or c file'
     endif
@@ -253,11 +253,11 @@ let g:fzf_layout={'window': { 'width': 0.9, 'height': 0.7 }}
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}'], 'window': {'width': 0.9, 'height': 0.6}}, <bang>0)
 
-function! NoEndSpaceFunc()
+function! NoTrailingSpaceFunc()
     exec '%s/\s\+$//g'
 endfunc
 
-command! NoEndSpace call NoEndSpaceFunc()
+command! NoTrailingSpace call NoTrailingSpaceFunc()
 
 "nnoremap <leader>y :<C-u>CocList -A --normal yank<cr>
 
