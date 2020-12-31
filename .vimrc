@@ -129,7 +129,7 @@ map <F11> :call CompileAndRun()<cr>
 func! CompileAndRun()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
-        exec '!g++ -Wall -std=gnu++11 -g -o2 % -o %<'
+        exec '!g++ -Wall -std=gnu++17 -g -o2 % -o %<'
         exec '!time ./%<'
     elseif &filetype is 'python'
         exec '!python3 %'
@@ -153,7 +153,7 @@ map <F9> :call Compile()<cr>
 func! Compile()
     exec 'w'
     if &filetype is 'cpp' || &filetype is 'c' || &filetype is 'cc'
-        exec '!g++ -Wall -std=gnu++11 -g -o2 % -o %<'
+        exec '!g++ -Wall -std=gnu++17 -g -o2 % -o %<'
     else
         echo 'Not a cpp or c file'
     endif
@@ -324,6 +324,8 @@ nnoremap <leader>r :Ranger<cr>
 
 " set the maximum number of items to show in the popop menu for Insert mode completion
 set pumheight=20
+set pumwidth=5
+
 
 " coc-yank
 nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
@@ -368,3 +370,11 @@ let g:onedark_terminal_italics=1
 " coc-translator
 nmap <leader>t <Plug>(coc-translator-p)
 vmap <leader>t <Plug>(coc-translator-pv)
+
+" coc.nvim refractor
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rf <Plug>(coc-refactor)
+
+" indentLine
+let g:indentLine_char='▏'
+
