@@ -35,6 +35,7 @@ Plug 'sillybun/vim-repl'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dstein64/vim-startuptime'
+Plug 'skywind3000/vim-terminal-help'
 "Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 call plug#end()
 " plugin list end
