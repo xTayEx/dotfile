@@ -8,14 +8,9 @@ runtime! debian.vim
 
 " plugin list begin
 call plug#begin('~/.vim/plugged')
-Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'glepnir/dashboard-nvim'
-"Plug 'mhinz/vim-startify'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'preservim/nerdtree'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'Yggdroot/indentLine', {'for': ['python', 'cpp']}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -24,7 +19,6 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
-"Plug 'vim/killersheep'
 Plug 'liuchengxu/vim-which-key', {'on': ['WhichKey', 'WhichKey!']}
 Plug 'liuchengxu/space-vim-theme'
 Plug 'mbbill/undotree'
@@ -38,11 +32,9 @@ Plug 'dstein64/vim-startuptime'
 Plug 'skywind3000/vim-terminal-help'
 Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'adelarsq/vim-devicons-emoji'
 Plug 'glepnir/galaxyline.nvim'
 Plug 'liuchengxu/vim-clap'
-"Plug 'glepnir/spaceline.vim'
-"Plug 'bagrat/vim-buffet'
-"Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'alec-gibson/nvim-tetris' 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }, 'for': ['markdown', 'vim-plug'] }
@@ -56,6 +48,16 @@ Plug 'wfxr/minimap.vim'
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'tversteeg/registers.nvim'
 Plug 'npxbr/weather.nvim'
+Plug 'wakatime/vim-wakatime'
+Plug 'itchyny/calendar.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+Plug 'f-person/git-blame.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-orgmode/orgmode'
+Plug 'numToStr/Comment.nvim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 " plugin list end
 
@@ -137,6 +139,7 @@ nnoremap <Leader>6 :b6<cr>
 nnoremap <Leader>7 :b7<cr>
 nnoremap <Leader>8 :b8<cr>
 nnoremap <Leader>9 :b9<cr>
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap J 3j
 nnoremap K 3k
 
@@ -236,11 +239,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
 set noswapfile
 
 " 修改光标样式
+" .=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=
 let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
-
 " 使vim支持真彩色
 if has("termguicolors")
     " fix bug for vim
@@ -531,6 +534,7 @@ gls.mid[1] = {
   }
 }
 
+
 gls.right[1] = {
   FileEncode = {
     provider = 'FileEncode',
@@ -653,7 +657,7 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 
-nnoremap <F3> :NvimTreeToggle<CR>
+nnoremap <leader>e :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
@@ -661,4 +665,46 @@ nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
 let g:minimap_highlight_range = 1
 
-let g:weather_city = ''
+let g:weather_city = 'Shenzhen'
+
+" comment
+lua require('Comment').setup()
+
+" orgmode
+
+lua << EOF
+
+-- Load custom tree-sitter grammar for org filetype
+require('orgmode').setup_ts_grammar()
+
+-- Tree-sitter configuration
+require'nvim-treesitter.configs'.setup {
+  -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
+  highlight = {
+    enable = true,
+    disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
+    additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
+  },
+  ensure_installed = {'org'}, -- Or run :TSUpdate org
+}
+
+require('orgmode').setup({
+  org_agenda_files = {'~/org', '~/org/**/*'},
+  org_default_notes_file = '~/org/refile.org',
+})
+EOF
+
+" vim-gutentags
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_ctags_tagfile = '.tags'
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+set tags=./.tags;,.tags
+let g:gutentags_trace = 1
